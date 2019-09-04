@@ -57,23 +57,26 @@ class CraiglistScraper:
 
         return title, des, attr
 
-location = 'sfbay'
-distance = '5'
-postal = '94201'
-radius = '5'
-model = 'Accord'
-make = 'Honda'
-year = '2010'
+def main():
+    location = 'sfbay'
+    distance = '5'
+    postal = '94201'
+    radius = '5'
+    model = 'Accord'
+    make = 'Honda'
+    year = '2010'
 
-details = {}
-scapper = CraiglistScraper(location, postal, radius, make, model, year)
-scapper.find_all_posts()
-for link in scapper.url_lst[:2]:
-    print(link)
-    title, des, attr = scapper.car_details(link)
-    print('______________________________')
-    details[link] = {'title': title,
-                     'des': des,
-                     'attr': attr}
-print(details)
+    details = {}
+    scapper = CraiglistScraper(location, postal, radius, make, model, year)
+    scapper.find_all_posts()
+    for link in scapper.url_lst[:2]:
+        print(link)
+        title, des, attr = scapper.car_details(link)
+        print('______________________________')
+        details[link] = {'title': title,
+                        'des': des,
+                        'attr': attr}
+    print(details)
 
+if __name__ == '__main__':
+    main()
